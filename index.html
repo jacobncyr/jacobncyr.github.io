@@ -18,23 +18,35 @@
   .announcement {
     text-align: center;
     font-family: Arial, sans-serif;
-    color: #ff0000; /* bright blood red */
+    animation: pulse 2s infinite alternate;
   }
   
   .title {
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #ff0000; /* bright blood red */
   }
   
   .subtitle {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: #ff0000; /* bright blood red */
   }
   
   .game-name {
     font-size: 3em;
     font-weight: bold;
+    color: #ff0000; /* bright blood red */
+  }
+  
+  @keyframes pulse {
+    from {
+      color: black; /* start from black */
+    }
+    to {
+      color: #ff0000; /* end at bright red */
+    }
   }
 </style>
 </head>
