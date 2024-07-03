@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homer The Dog 2D</title>
+    <title>Pulsing Element</title>
     <style>
-        body {
-            background-color: black;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: black; /* Initial color (black) */
-            transition: color 2s; /* Transition duration */
-        }
-        body:hover {
-            color: #800000; /* Blood red color */
+        .pulse-element {
+            /* Set initial styles for your element */
+            display: inline-block;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Coming to PC Multiplayer</h1>
-    <p>December 14th, 2024 - <strong>Homer The Dog 2D</strong></p>
+    <button class="pulse-element" id="myButton">Pulse Animation</button>
+
+    <script>
+        const button = document.getElementById('myButton');
+
+        function pulse() {
+            button.style.transform = 'scale(1.05)'; // Increase size
+            setTimeout(() => {
+                button.style.transform = 'scale(1)'; // Return to original size
+            }, 500); // Adjust the duration (in milliseconds) as needed
+        }
+
+        // Start the pulsing animation
+        setInterval(pulse, 1000); // Repeat every 1 second (adjust the interval as desired)
+    </script>
 </body>
 </html>
