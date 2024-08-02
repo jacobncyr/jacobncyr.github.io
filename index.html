@@ -20,31 +20,19 @@
     height: 100vh;
   }
   
-  .announcement {
-    text-align: center;
+  /* Add this to your existing styles */
+ .announcement {
+    /* ... (other styles) ... */
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    /* ^^^ This creates the black outline effect */
+}
+
+ .title, .subtitle, .game-name {
+    color: white; /* Set the text color to white */
+    font-weight: bold;
     font-family: Arial, sans-serif;
-    animation: pulse 2s infinite alternate;
-  }
-  
-  .title {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #ff0000; /* bright blood red */
-  }
-  
-  .subtitle {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #ff0000; /* bright blood red */
-  }
-  
-  .game-name {
-    font-size: 3em;
-    font-weight: bold;
-    color: #ff0000; /* bright blood red */
-  }
-  
+    /* ... (other styles) ... */
+}
   @keyframes pulse {
     from {
       color: black; /* start from black */
