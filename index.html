@@ -8,9 +8,11 @@
   <h1>PDF Splitter - split your PDF book up into chapters ! print/mail ready !</h1>		
   <h2>submit your pdf file here !</h2>
   <input type="file" id="pdfInput" accept="application/pdf"><br><br>
+  <h2>now pick a starting page</h2>
   <label>Start Page: <input type="number" id="startPage" min="1"></label><br>
+  <h2>now pick a ending page , the program will let you download only those pages!</h2>
   <label>End Page: <input type="number" id="endPage" min="1"></label><br><br>
-  <button id="splitBtn">Split PDF</button>
+  <button id="splitBtn">Download the Pages</button>
 
   <script type="module">
     import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib";
