@@ -11,9 +11,38 @@
       margin: 0;
       padding: 0;
       display: flex;
+      min-height: 100vh;
+    }
+
+    /* --- SIDEBAR --- */
+    aside {
+      width: 260px;
+      background-color: #1a1a1a;
+      padding: 25px;
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    aside h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #ff5252;
+    }
+
+    aside p {
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
+
+    /* --- MAIN CONTENT AREA --- */
+    .content {
+      flex: 1;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
     }
 
     header {
@@ -85,34 +114,48 @@
       padding: 20px;
       color: #888;
       font-size: 0.9rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>PDF Splitter</h1>
-  </header>
 
-  <main>
-    <h2>📄 Upload your PDF</h2>
-    <input type="file" id="pdfInput" accept="application/pdf" />
+  <!-- SIDEBAR -->
+  <aside>
+    <h2>Hi, I'm Jacob</h2>
+    <p>
+      I was hoping this could be used to provide inmates with information 
+      in the form of letter mail.
+    </p>
+  </aside>
 
-    <h2>🔢 Select Page Range</h2>
-    <label>
-      Start Page:
-      <input type="number" id="startPage" min="1" placeholder="e.g. 1" />
-    </label>
-    <label>
-      End Page:
-      <input type="number" id="endPage" min="1" placeholder="e.g. 5" />
-    </label>
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    <header>
+      <h1>PDF Splitter</h1>
+    </header>
 
-    <button id="splitBtn">📥 Download Selected Pages</button>
-  </main>
+    <main>
+      <h2>📄 Upload your PDF</h2>
+      <input type="file" id="pdfInput" accept="application/pdf" />
 
-  <footer>
-    &copy; 2025 Treaty Four Tech. All rights reserved.
-  </footer>
+      <h2>🔢 Select Page Range</h2>
+      <label>
+        Start Page:
+        <input type="number" id="startPage" min="1" placeholder="e.g. 1" />
+      </label>
+      <label>
+        End Page:
+        <input type="number" id="endPage" min="1" placeholder="e.g. 5" />
+      </label>
+
+      <button id="splitBtn">📥 Download Selected Pages</button>
+    </main>
+
+    <footer>
+      &copy; 2025 Treaty Four Tech. All rights reserved.
+    </footer>
+  </div>
 
   <script type="module">
     import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib";
@@ -155,5 +198,6 @@
       link.click();
     };
   </script>
+
 </body>
 </html>
