@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Splitter</title>
+</head>
+<body>
+  <h1>PDF Splitter (Client-Side)</h1>
+
+  <input type="file" id="pdfInput" accept="application/pdf"><br><br>
+  <label>Start Page: <input type="number" id="startPage" min="1"></label><br>
+  <label>End Page: <input type="number" id="endPage" min="1"></label><br><br>
+  <button id="splitBtn">Split PDF</button>
+
+  <script type="module">
+    import { PDFDocument } from "https://cdn.skypack.dev/pdf-lib";
+
+    document.getElementById("splitBtn").onclick = async () => {
+      const file = document.getElementById("pdfInput").files[0];
+      if (!file) {
+        alert("Please upload a PDF first.");
+        return;
+      }
+
+      const start = parseInt(document.getElementById("startPage").value);
+      const end = parseInt(document.getElementById("endPage").value);
+
+      if (isNaN(start) || isNaN(end) || start < 1 || end < start) {
+        alert("Enter valid start and end pages.");
+        return;
+      }
+
+      // Load original PDF
+      const arrayBuffer = await file.arrayBuffer();
+      const pdfDoc = await PDFDocument.load(arrayBuffer);
+
+      // Create new PDF
+      const newPdf = await PDFDocument.create();
+      const totalPages = pdfDoc.getPageCount();
+
+      if (end > totalPages) {
+        alert(`PDF only has ${totalPages} pages.`);
+        return;
+      }
+
+      for (let i = start - 1; i < end; i++) {
+        const [page] = await newPdf.copyPages(pdfDoc, [i]);
+        newPdf.addPage(page);
+      }
+
+      // Save and download
+      const pdfBytes = await newPdf.save();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `split_${start}_to_${end}.pdf`;
+      link.click();
+    };
+  </script>
+</body>
+</html>
